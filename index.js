@@ -46,6 +46,14 @@ const setup = async () => {
     accesstokenEndpoint: 'http://localhost/moodle/mod/lti/token.php',
     authConfig: { method: 'JWK_SET', key: 'http://localhost/moodle/mod/lti/certs.php' }
   }) */
+   await lti.registerPlatform({
+    url: 'https://blackboard.com',
+    name: 'Platform',
+    clientId: 'e6ee71b5-519d-40c0-bb36-e481afe6585d',
+    authenticationEndpoint: 'https://developer.anthology.com/api/v1/gateway/oidcauth',
+    accesstokenEndpoint: 'https://developer.anthology.com/api/v1/gateway/oauth2/jwttoken',
+    authConfig: { method: 'JWK_SET', key: 'https://developer.anthology.com/api/v1/management/applications/e6ee71b5-519d-40c0-bb36-e481afe6585d/jwks.json' }
+  }) 
 }
 
 setup()
