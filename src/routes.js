@@ -52,7 +52,7 @@ router.get('/members', async (req, res) => {
     const result = await lti.NamesAndRoles.getMembers(res.locals.token)
 //    if (result) return res.send(result.members)
   //  return res.sendStatus(500)
-	  return lti.redirect(res,'https://bridge.bridgelearning.ca/bridge?ltik='+req.query.ltik);
+	  return lti.redirect(res,process.env.BRIDGE_APP+'/bridge?ltik='+req.query.ltik);
   } catch (err) {
     console.log(err.message)
     return res.status(500).send(err.message)
