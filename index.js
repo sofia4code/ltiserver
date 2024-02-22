@@ -54,6 +54,14 @@ const setup = async () => {
     accesstokenEndpoint: 'https://developer.anthology.com/api/v1/gateway/oauth2/jwttoken',
     authConfig: { method: 'JWK_SET', key: 'https://developer.anthology.com/api/v1/management/applications/e6ee71b5-519d-40c0-bb36-e481afe6585d/jwks.json' }
   }) 
+  await lti.registerPlatform({
+    url: 'https://blackboard.com',
+    name: 'Platform',
+    clientId: '4b21d66e-0b1e-4467-8d78-9ad39d0dd5bc',
+    authenticationEndpoint: 'https://developer.anthology.com/api/v1/gateway/oidcauth',
+    accesstokenEndpoint: 'https://developer.anthology.com/api/v1/gateway/oauth2/jwttoken',
+    authConfig: { method: 'JWK_SET', key: 'https://developer.anthology.com/api/v1/management/applications/4b21d66e-0b1e-4467-8d78-9ad39d0dd5bc/jwks.json' }
+  }) 
 }
 
 setup()
