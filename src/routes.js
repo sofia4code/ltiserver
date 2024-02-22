@@ -50,14 +50,27 @@ router.post('/grade', async (req, res) => {
 router.get('/members', async (req, res) => {
   try {
     const result = await lti.NamesAndRoles.getMembers(res.locals.token)
-    if (result) return res.send(result.members)
-    return res.sendStatus(500)
+//    if (result) return res.send(result.members)
+  //  return res.sendStatus(500)
+	  return lti.redirect(res,'https://ec2-44-210-198-241.compute-1.amazonaws.com/bridge?ltik='+req.query.ltik);
   } catch (err) {
     console.log(err.message)
     return res.status(500).send(err.message)
   }
 })
-
+router.get('/token', async (req, res) => {
+  try {
+    const result = await lti.NamesAndRoles.getMembers(res.locals.token)
+    const data = {
+      token: res.locals.token,
+      members: result.members
+    }
+    if (result) return res.send(data)
+  } catch (err) {
+    console.log(err.message)
+    return res.status(500).send(err.message)
+  }
+})
 // Deep linking route
 router.post('/deeplink', async (req, res) => {
   try {
