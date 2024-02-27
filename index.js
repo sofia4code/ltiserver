@@ -61,7 +61,15 @@ const setup = async () => {
     authenticationEndpoint: 'https://developer.anthology.com/api/v1/gateway/oidcauth',
     accesstokenEndpoint: 'https://developer.anthology.com/api/v1/gateway/oauth2/jwttoken',
     authConfig: { method: 'JWK_SET', key: 'https://developer.anthology.com/api/v1/management/applications/4b21d66e-0b1e-4467-8d78-9ad39d0dd5bc/jwks.json' }
-  }) 
+  })
+  await lti.registerPlatform({
+    url: 'https://nouvelontest.desire2learn.com',
+    name: 'Platform',
+    clientId: '37daa47d-3733-481e-9378-d07524583a7d',
+    authenticationEndpoint: 'https://nouvelontest.desire2learn.com/d2l/lti/authenticate',
+    accesstokenEndpoint: 'https://api.brightspace.com/auth/token',
+    authConfig: { method: 'JWK_SET', key: 'https://nouvelontest.desire2learn.com/d2l/.well-known/jwks' }
+  })
 }
 
 setup()
